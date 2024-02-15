@@ -84,28 +84,16 @@
         }
         msg = '<h1>' + number-- + '</h1>';
         document.write(msg); 
-      }, 1000);
+      }, 1000); 
     } 
 
-    timer(3); 
-*/
-      var msg = '';
-      function timer(num) {
-        var timerId = setInterval(() => {
-          if(num == 0) {
-            msg = '<h1>끝</h1>';
-            document.write(msg);
-            clearInterval(timerId);
-            return;
-          }
-          msg = '<h1>' + num-- + '</h1>';
-          document.write(msg); 
-        }, 100);
-      }
+    timer(3);  */
 
-timer(20);    
+ 
 
   </script>
+
+ 
   
 </body>
 </html>
