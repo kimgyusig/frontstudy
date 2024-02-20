@@ -106,6 +106,7 @@
       bbb();
     };
 
+
     // 이벤트 객체의 속성 확인하기
     document.querySelector('#div1 > button').onclick = function(evt) {
       console.log(evt);
@@ -216,7 +217,27 @@
         evt.preventDefault();
         return;
       }
-    }
+    } 
+    document.querySelector('#div5  form').addEventListener('submit', function(evt){
+      if(document.getElementById('query').value ==='') {
+        alert('입력1');
+        document.getElementById('query').focus();
+        evt.preventDefault();
+        return;
+      }
+      if(document.getElementById('q').value ==='') {
+        alert('입력2 ');
+        document.getElementById('q').focus();
+        evt.preventDefault();
+        return;
+      }
+    })
+
+    </script>
+
+    
+
+        
 
     </script>
   
