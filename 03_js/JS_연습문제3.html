@@ -22,11 +22,15 @@
    var it = document.getElementById('btn1');
    function ex01(){
      document.getElementById('btn1').onclick = function() {
-        //document.querySelector('#div1 img').src = '../../assets/image/light2.png';
-        d.src ='../../assets/image/light2.png';
-        it.textContent = 'OFF';
-      }
+       //document.querySelector('#div1 img').src = '../../assets/image/light2.png';
+       if(d.src == "../../assets/image/light1.png"){
+         d.src ='../../assets/image/light2.png';
+         it.textContent = 'OFF';
+
+       }
+
       
+      }    
       
    }
    ex01();
