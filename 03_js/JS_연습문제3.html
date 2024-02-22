@@ -23,10 +23,12 @@
    function ex01(){
      document.getElementById('btn1').onclick = function() {
        //document.querySelector('#div1 img').src = '../../assets/image/light2.png';
-       if(d.src == "../../assets/image/light1.png"){
+       if(d.getAttribute('src') == "../../assets/image/light1.png"){
          d.src ='../../assets/image/light2.png';
          it.textContent = 'OFF';
-
+       } else {
+        d.src ='../../assets/image/light1.png';
+         it.textContent = 'ON';
        }
 
       
@@ -76,11 +78,12 @@
     function ex02() {
 
       document.getElementById('btn-next').onclick = function() {
-        var imgNO =1;
-        while(imgNO < 10){
-          imgNO++;
-          imgnx.style.backgroundImage +=  'url(../../assets/image/animal' + imgNO + '.jpg)';
-          
+        var imgNO =1;       
+        if(imgNO < 10){
+          for(imgNO=1; imgNO <11; imgNO++) {
+            imgNO++;
+            imgnx.style.backgroundImage +=  'url(../../assets/image/animal' + imgNO + '.jpg)';          
+          }        
         }
           
         
@@ -134,7 +137,11 @@
   </style>
   <script>
     /* 5개 thumbnail 이미지에 마우스를 가져다대면 해당 이미지를 original-image로 표시하시오. */
-    
+    var thum =  document.getElementById('thumbnail-images');
+    var ori = document.getElementById('orginal-image');
+    document.getElementById('thumbnail-images').addEventListener('hover', function(){
+      
+    })
   </script>
 
   <hr>
