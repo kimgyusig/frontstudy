@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
   
@@ -237,6 +238,7 @@
   <style>
     #answer {
       display: none;
+      
     }
   </style>
   <script>
@@ -247,13 +249,19 @@
             data-state="open-answer"는 정답 보임 상태를 의미한다.
     */
 
-    var dat = document.getElementById('btn5');
+   var dat = document.getElementById('btn5');
     var ans = document.getElementById('answer');
-    document.getElementById('btn5').onclick = function() {
+    document.getElementById('btn5').onclick = function(evt) {
       if(ans.textContent === '5'){
-     dat.getAttribute('data-state') = 'answer';      
+      evt.target.dataset.state = 'open-answer';      
+      ans.style.display = 'flex';
     } 
-  }
+  
+  } 
+
+ /* $('#btn5').on('click', function(evt){
+    $('#answer').toggle();
+  }) */
     
 
   </script>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <style>
+    #div1{
+      width: 100px;
+      height: 50px;
+      border: 1px solid gray;
+    }
+  </style>
+  <div>
+    <button type="button" id="btn5">버튼5</button>
+    <div id="div1"></div>
+    </div>
+    <script>
+  
+      function myFunc1() {
+        return new Promise(function(resolve, reject){
+          $.ajax({
+            type: 'GET',
+            url: 'https://jsonplaceholder.typicode.com/photos/1',
+            dataType: 'json',
+            success: function(response1){
+              resolve(response1);
+            },
+            error: function(jqXHR1){
+              reject('실패');
+            }
+          })
+        });
+      }
+      function myFunc2(response1) {
+        return new Promise(function(resolve, reject){
+          $.ajax({
+            type: 'GET',
+            url: 'https://thetestrequest.com/authors/'+ (response1.id +1) +'.xml',
+            dataType: 'xml',
+            success: function(response2){
+              resolve(response2);
+            }
+          })
+        });
+      }
+      function myFunc3(response2) {
+        return new Promise(function(resolve, reject){
+          $.ajax({
+            type: 'GET',
+            url: 'https://jsonplaceholder.typicode.com/photos/' + (Number($(response2).find('id').text()) +1),
+            dataType:'json',
+            success: function(response3) {
+              var res = response3;
+              console.log(res);
+              var dc = document.getElementById('div1');
+              dc = '';
+              dc+= '<div>';
+              dc += '<div>id:' + response3.id + '</div>';
+              dc += '<div>title:' + response3.title + '</div>';
+              dc += '</div>';
+              $('#div1').html(dc); 
+            }
+          })
+        });
+      }
+      function myjob(){
+       myFunc1()
+       .then(function(response1){
+        return myFunc2(response1); 
+       }, function(jqXHR1){
+        alert(jqXHR1);
+       })
+       .then(function(response2){
+        return myFunc3(response2);
+       });
+      }
+    /* myFunc1() 호출하면 promise 반환하니 promise객체는 .then메소드사용 success인함수에값을response1으로받고resolve도 response1넘기고
+    resolve는 then메소드의 첫번째 함수의 값을 넘긴다. myFunc2에 response1받으니 함수생성할때도 파라미터로response1을받는다. */ 
+      $('#btn5').on('click', myjob);
+  
+    </script>
+  
+</body>
+</html>
